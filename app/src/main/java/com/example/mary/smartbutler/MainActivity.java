@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.example.mary.smartbutler.fragment.ButlerFragment;
@@ -61,11 +62,40 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void initView() {
         fab_setting = (FloatingActionButton) findViewById(R.id.fab_setting);
         fab_setting.setOnClickListener(this);
+        //默认隐藏
+        fab_setting.setVisibility(View.GONE);
         mTabLayout = (TabLayout) findViewById(R.id.mTabLayout);
         mViewPager = (ViewPager) findViewById(R.id.mViewPager);
 
         //预加载
         mViewPager.setOffscreenPageLimit(mFragment.size());
+
+        //mViewPager滑动监听
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+
+            //当页面滑动时，这个方法将被调用
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            //当新页面将被选中时调用，动画不是必需完成的,也就是说可能动画还在继续的时候，这个方法就被调用了。
+            @Override
+            public void onPageSelected(int position) {
+                Log.i("TAG","position"+position);
+                if(position == 0){
+                    fab_setting.setVisibility(View.GONE);
+                }else{
+                    fab_setting.setVisibility(View.VISIBLE);
+                }
+            }
+
+            //当滑动状态改变时被调用，有助于发现当用户开始拖拽，当页面自动的安放在当前页面，或当页面完全停止。
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
 
         //设置适配器
         mViewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
