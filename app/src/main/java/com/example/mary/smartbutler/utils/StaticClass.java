@@ -6,4 +6,10 @@ package com.example.mary.smartbutler.utils;
  */
 
 public class StaticClass {
+
+    //闪屏页的延时
+    public static final int HANDLER_SPLASH = 1001;
+    //判断是否第一次运行程序
+    public static final String SHARE_IS_First = "isFirst";
+
 }

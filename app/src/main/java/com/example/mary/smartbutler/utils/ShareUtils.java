@@ -9,7 +9,7 @@ import android.content.SharedPreferences;
  * 文件名：  ShareUtils.
  * 创建者：  mary.
  * 创建时间：2017/10/10 21:49.
- * 描述：    SharePerference封装
+ * 描述：    SharePerference封装  put方法是存取数据 get方法是读取数据
  */
 
 public class ShareUtils {
