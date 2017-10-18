@@ -34,4 +34,6 @@ dependencies {
     compile 'com.android.support:design:26.0.0-alpha1'
     compile 'com.tencent.bugly:crashreport:latest.release'
     compile 'com.tencent.bugly:nativecrashreport:latest.release'
+    //Bomb
+    compile 'cn.bmob.android:bmob-sdk:3.5.5'
 }
